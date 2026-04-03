@@ -1,11 +1,60 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import WishlistItem from "../components/WishlistItem.astro";
+import { wishlist, meta } from "../data/wishlist";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const totalItems = wishlist.length;
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={meta.title}>
+  <main class="min-h-screen flex flex-col">
+    <header
+      class="border-b border-white/8 bg-black/20 backdrop-blur-sm sticky top-0 z-10"
+    >
+      <div
+        class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <span class="text-xl font-medium text-muted-foreground tracking-wide"
+          >{meta.title}</span
+        >
+        <span
+          class="text-xs text-muted-foreground/60 bg-white/5 border border-white/8 rounded-full px-3 py-1"
+        >
+          {totalItems} items
+        </span>
+      </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-6 w-full flex-1">
+      <section class="py-16 text-center">
+        <h1 class="text-5xl font-bold tracking-tight mb-3 gradient-heading">
+          {meta.title}
+        </h1>
+        <p class="text-muted-foreground text-base">
+          A curated list of things worth having.
+        </p>
+      </section>
+
+      <section class="pb-16">
+        <div class="grid grid-cols-2 gap-4">
+          {wishlist.map((item) => <WishlistItem item={item} />)}
+        </div>
+      </section>
+    </div>
+
+    <footer class="border-t border-white/8 py-6">
+      <div class="max-w-5xl mx-auto px-6 flex justify-center">
+        <p class="text-xs text-muted-foreground/50">
+          Last updated <time
+            >{
+              new Date().toLocaleDateString("en-GB", {
+                month: "long",
+                year: "numeric",
+              })
+            }</time
+          >
+        </p>
+      </div>
+    </footer>
+  </main>
 </Layout>
