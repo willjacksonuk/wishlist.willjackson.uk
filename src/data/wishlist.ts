@@ -66,7 +66,7 @@ export const wishlist: WishlistItem[] = [
     brand: "OXO",
     description: "A good tin opener",
     url: "https://www.amazon.co.uk/dp/B00004OCJW?ascsubtag=5121833",
-    price: "12",
+    price: "£12",
     priority: "medium"
   }
   ];
