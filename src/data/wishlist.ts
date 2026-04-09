@@ -2,6 +2,7 @@ export interface WishlistItem {
   title: string;
   brand?: string;
   description?: string;
+  code?: string;
   url?: string;
   price?: string;
   priority?: "high" | "medium" | "low";
@@ -17,6 +18,7 @@ export const wishlist: WishlistItem[] = [
     title: "Diamond Cotton Twill Camp Cap",
     brand: "Finisterre",
     description: "Organic cotton twill camp cap with diamond logo patch in navy",
+    code: "20% off: WELCOMEBACK-WPJG-7M",
     url: "https://finisterre.com/products/organic-cotton-diamond-twill-camp-cap-navy",
     price: "£40.00",
     priority: "medium"
@@ -33,6 +35,7 @@ export const wishlist: WishlistItem[] = [
     title: "Nalgene Sustain 1L Wide Mouth Bottle",
     brand: "Finisterre",
     description: "Reusable 1 litre bottle in seafoam blue and mermaid print",
+    code: "20% off: WELCOMEBACK-WPJG-7M",
     url: "https://finisterre.com/products/nalgene-sustain-1l-waterbottle-seafoam",
     price: "£25.00",
     priority: "medium"
@@ -41,6 +44,7 @@ export const wishlist: WishlistItem[] = [
     title: "Ribbed Sock",
     brand: "Finisterre",
     description: "Wool blend ribbed sock in whichever colour you think is nicest",
+    code: "20% off: WELCOMEBACK-WPJG-7M",
     url: "https://finisterre.com/products/wool-blend-ribbed-sock-beeswax",
     price: "£20.00",
     priority: "medium"
