@@ -1,46 +1,38 @@
-# Astro Starter Kit: Basics
+# Wishlist — wishlist.willjackson.uk
+
+A personal wishlist app built to practise working with Astro, Tailwind CSS and Starwind.
+
+## Features
+
+- Wishlist items with title, brand, description, price, and priority level
+- Colour-coded priority badges (high / medium / low)
+- Discount codes displayed per item, if applicable
+- Responsive grid layout with a contemporary dark style
+- Sticky header showing total item count and transparency effect
+- Footer with auto-updating last-modified date
+- Wishlist data oraganised in a separate Typescript file for easy updating
+
+## Tech Stack
+
+- [Astro](https://astro.build/) — static site framework (zero JS to client by default)
+- [Tailwind CSS v4](https://tailwindcss.com/) — utility-first styling
+- [Starwind](https://starwind.dev/) — Tailwind component library
+- TypeScript throughout
+
+## Getting Started
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # production build to ./dist/
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project Structure
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
 ```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+src/
+├── components/   # Reusable Astro components
+├── data/         # Wishlist items (TypeScript)
+├── layouts/      # Page layout
+└── pages/        # Astro pages
+```
