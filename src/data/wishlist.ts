@@ -71,7 +71,7 @@ export const wishlist: WishlistItem[] = [
     description: "A good tin opener",
     url: "https://www.amazon.co.uk/dp/B00004OCJW?ascsubtag=5121833",
     price: "£12.00",
-    priority: "medium"
+    priority: "low"
   },
   {
     title: "TM-02 Digital Kitchen Timer",
@@ -79,6 +79,6 @@ export const wishlist: WishlistItem[] = [
     description: "A dual-display digital kitchen timer",
     url: "https://www.amazon.co.uk/ThermoPro-TM02-Countdown-Adjustable-Backlight/dp/B0CS35GXJK",
     price: "£12.70",
-    priority: "medium"
+    priority: "high"
   }
   ];

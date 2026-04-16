@@ -1,5 +1,6 @@
 ---
 import "@/styles/starwind.css";
+import "@/styles/global.css";
 
 interface Props {
   title: string;
@@ -9,25 +10,48 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <!-- Stop theme toggle from casuing flicker on page loads -->
+    <script is:inline>
+      function initTheme() {
+        const colorTheme = localStorage.getItem("colorTheme");
+        if (!colorTheme) {
+          if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("colorTheme", "dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("colorTheme", "light");
+          }
+        } else {
+          if (colorTheme === "dark") {
+            document.documentElement.classList.add("dark");
+          } else if (colorTheme === "light") {
+            document.documentElement.classList.remove("dark");
+          } else if (colorTheme === "system") {
+            const prefersDark = window.matchMedia(
+              "(prefers-color-scheme: dark)",
+            ).matches;
+            document.documentElement.classList.toggle("dark", prefersDark);
+          }
+        }
+      }
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		min-height: 100%;
-	}
-</style>
+      initTheme();
+      document.addEventListener("astro:after-swap", initTheme);
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

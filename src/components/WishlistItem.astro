@@ -9,10 +9,10 @@ interface Props {
 
 const { item } = Astro.props;
 
-const priorityBadge: Record<string, "primary" | "warning" | "error"> = {
-  high: "error",
-  medium: "warning",
-  low: "primary",
+const priorityBadge: Record<string, "success" | "info" | "ghost"> = {
+  high: "success",
+  medium: "info",
+  low: "ghost",
 };
 
 const priorityLabel: Record<string, string> = {
@@ -23,7 +23,7 @@ const priorityLabel: Record<string, string> = {
 ---
 
 <article
-  class="group relative flex flex-col bg-card border border-white/8 rounded-xl p-5 transition-all duration-200 hover:border-blue-500/30 hover:glow-blue"
+  class="group relative flex flex-col bg-card border border-border rounded-md p-5 transition-all duration-200 hover:border-blue-500/40 hover:glow-blue"
 >
   <div class="mb-3">
     <div class="flex items-start justify-between gap-3 mb-1">
@@ -76,7 +76,7 @@ const priorityLabel: Record<string, string> = {
     }
   </section>
   <div
-    class="flex items-center justify-between mt-auto pt-3 border-t border-white/6"
+    class="flex items-center justify-between mt-auto pt-3 border-t border-border"
   >
     {
       item.price ? (
