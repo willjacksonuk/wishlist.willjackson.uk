@@ -1,10 +1,17 @@
 ---
-import type { WishlistItem } from "../data/wishlist.ts";
 import { Badge } from "@/components/starwind/badge";
 import { Button } from "@/components/starwind/button";
 
 interface Props {
-  item: WishlistItem;
+  item: {
+    title: string;
+    brand?: string | null;
+    description?: string | null;
+    code?: string | null;
+    url?: string | null;
+    price?: string | null;
+    priority?: "high" | "medium" | "low" | null;
+  };
 }
 
 const { item } = Astro.props;
