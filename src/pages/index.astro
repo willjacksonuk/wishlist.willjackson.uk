@@ -1,12 +1,21 @@
 ---
+export const prerender = true;
+
 import Layout from "../layouts/Layout.astro";
 import WishlistItem from "../components/WishlistItem.astro";
-import { wishlist, meta } from "../data/wishlist";
 import { ThemeToggle } from "@/components/starwind/theme-toggle";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../keystatic.config";
 
+const reader = createReader(process.cwd(), keystaticConfig);
+const items = await reader.collections.wishlist.all();
+const meta = await reader.singletons.meta.read();
+
+const title = meta?.title ?? "Wishlist";
+const subtitle = meta?.subtitle ?? "";
 ---
 
-<Layout title={meta.title}>
+<Layout title={title}>
   <main class="min-h-screen flex flex-col">
     <header
       class="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-10"
@@ -15,7 +24,7 @@ import { ThemeToggle } from "@/components/starwind/theme-toggle";
         class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between"
       >
         <span class="text-xl font-medium text-muted-foreground tracking-wide"
-          >{meta.title}</span
+          >{title}</span
         >
         <ThemeToggle />
       </div>
@@ -24,16 +33,16 @@ import { ThemeToggle } from "@/components/starwind/theme-toggle";
     <div class="max-w-5xl mx-auto px-6 w-full flex-1">
       <section class="py-16 text-center">
         <h1 class="text-5xl font-bold tracking-tight mb-3">
-          {meta.title}
+          {title}
         </h1>
         <p class="text-muted-foreground text-base">
-          A curated list of things worth having.
+          {subtitle}
         </p>
       </section>
 
       <section class="pb-16">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {wishlist.map((item) => <WishlistItem item={item} />)}
+          {items.map((item) => <WishlistItem item={item.entry} />)}
         </div>
       </section>
     </div>
