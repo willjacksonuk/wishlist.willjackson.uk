@@ -4,6 +4,7 @@ export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import WishlistItem from "../components/WishlistItem.astro";
 import { ThemeToggle } from "@/components/starwind/theme-toggle";
+import { Button } from "@/components/starwind/button";
 import { createReader } from "@keystatic/core/reader";
 import keystaticConfig from "../../keystatic.config";
 
@@ -26,7 +27,10 @@ const subtitle = meta?.subtitle ?? "";
         <span class="text-xl font-medium text-muted-foreground tracking-wide"
           >{title}</span
         >
-        <ThemeToggle />
+        <div class="flex gap-4">
+          <Button href="/keystatic" variant="outline">Edit</Button>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
 
