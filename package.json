@@ -12,14 +12,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.6.5",
-    "@astrojs/react": "^4.4.2",
-    "@keystatic/astro": "^5.0.6",
-    "@keystatic/core": "^0.5.50",
+    "@astrojs/react": "^6.0.5",
     "@tabler/icons": "^3.41.1",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^5.18.1",
+    "astro": "^7.3.2",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "tailwind-merge": "^3.5.0",

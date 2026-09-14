@@ -4,16 +4,13 @@ export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import WishlistItem from "../components/WishlistItem.astro";
 import { ThemeToggle } from "@/components/starwind/theme-toggle";
-import { Button } from "@/components/starwind/button";
-import { createReader } from "@keystatic/core/reader";
-import keystaticConfig from "../../keystatic.config";
+import { getCollection, getEntry } from "astro:content";
 
-const reader = createReader(process.cwd(), keystaticConfig);
-const items = await reader.collections.wishlist.all();
-const meta = await reader.singletons.meta.read();
+const items = await getCollection("wishlist");
+const meta = await getEntry("meta", "meta");
 
-const title = meta?.title ?? "Wishlist";
-const subtitle = meta?.subtitle ?? "";
+const title = meta?.data.title ?? "Wishlist";
+const subtitle = meta?.data.subtitle ?? "";
 ---
 
 <Layout title={title}>
@@ -28,7 +25,6 @@ const subtitle = meta?.subtitle ?? "";
           >{title}</span
         >
         <div class="flex gap-4">
-          <Button href="/keystatic" variant="outline">Edit</Button>
           <ThemeToggle />
         </div>
       </div>
@@ -46,7 +42,7 @@ const subtitle = meta?.subtitle ?? "";
 
       <section class="pb-16">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {items.map((item) => <WishlistItem item={item.entry} />)}
+          {items.map((item) => <WishlistItem item={item.data} />)}
         </div>
       </section>
     </div>

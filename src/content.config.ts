@@ -14,4 +14,12 @@ const wishlist = defineCollection({
   }),
 });
 
-export const collections = { wishlist };
+const meta = defineCollection({
+  loader: glob({ pattern: "meta.json", base: "./src/content" }),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string().optional(),
+  }),
+});
+
+export const collections = { wishlist, meta };
