@@ -7,22 +7,29 @@ content:
     filename: "{primary}.json"
     fields:
       - name: title
+        label: Title
         type: string
         required: true
       - name: brand
+        label: Brand
         type: string
       - name: description
+        label: Description
         type: text
       - name: url
+        label: URL
         type: string
       - name: price
-        type: string
-      - name: code
+        label: Price
         type: string
       - name: priority
+        label: Priority
         type: select
         options:
           values: [low, medium, high]
+      - name: code
+        label: Discount code?
+        type: string
 
   - name: meta
     label: Site Meta
