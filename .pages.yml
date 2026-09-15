@@ -1,0 +1,37 @@
+content:
+  - name: wishlist
+    label: Wishlist Items
+    type: collection
+    path: src/content/wishlist
+    format: json
+    filename: "{primary}.json"
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: brand
+        type: string
+      - name: description
+        type: text
+      - name: url
+        type: string
+      - name: price
+        type: string
+      - name: code
+        type: string
+      - name: priority
+        type: select
+        options:
+          values: [low, medium, high]
+
+  - name: meta
+    label: Site Meta
+    type: file
+    path: src/content/meta.json
+    format: json
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: subtitle
+        type: string
